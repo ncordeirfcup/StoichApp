@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
+
+   <header class="heading">
+     <h1>Stoichiometry for reactions</h1>
+   </header>
+   <body>
+    <div class="bod">
+     <h2>Description:</h2>
+     <p>This app claculates the required amount of compounds based on stoichiometry</p>
+    </div>
+     <form method="POST">
+      {{ template_form.hidden_tag() }}
+      <h2>Compound 1 Nature</h2>
+      <p>
+      <input type="radio" name="c1n" id="option1" value="Solid1"> Solid </input>
+      <input type="radio" name="c1n" id="option2" value="Liquid1"> Liquid </input>
+      </p>
+
+      <p>
+        {{ template_form.c1a.label }}
+        {{ template_form.c1a() }}
+      </p>
+      <p>
+        {{ template_form.c1m.label }}
+        {{ template_form.c1m() }}
+      </p>
+      <p>
+        {{ template_form.c1d.label }}
+        {{ template_form.c1d() }}
+      </p>
+      <h2>Compound 2 Nature</h2>
+      <p>
+      <input type="radio" name="c2n" id="option1" value="Solid2"> Solid </input>
+      <input type="radio" name="c2n" id="option2" value="Liquid2"> Liquid </input>
+      </p>
+      <p>
+        {{ template_form.c2m.label }}
+        {{ template_form.c2m() }}
+      </p>
+      <p>
+        {{ template_form.c2r.label }}
+        {{ template_form.c2r() }}
+      </p>
+      <p>
+        {{ template_form.c2d.label }}
+        {{ template_form.c2d() }}
+      </p>
+      <p>{{ template_form.submit() }}</p>
+     </form>
+     <h2>Result:</h2>
+     <p>Required amount: {{ '%0.2f'|format(template_list|float) }}</p>
+
+   </body>
+
+{% endblock %}
